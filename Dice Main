@@ -1,0 +1,52 @@
+import java.util.Random;
+import java.util.Scanner;
+public class dice {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+        /// Welcome, choose a die ///
+        System.out.println("Welcome to the D&D dice generator");
+        System.out.println("Which die would you like to roll?");
+        System.out.println("1) Three sided die (d3)");
+        System.out.println("2) Four sided die (d4)");
+        System.out.println("3) Six sided die (d6)");
+        System.out.println("4) Eight sided die (d8)");
+        System.out.println("5) Ten sided die (d10)");
+        System.out.println("6) Twelve sided die (d12)");
+        System.out.println("7) Twenty sided die (d20)");
+        /// Die Choice ///
+        int dieChoice = input.nextInt();
+        /// How many times? ///
+        System.out.println("And how many times?");
+        int times = input.nextInt();
+        int i = 0;
+        int rollNum = 0;
+        int total = 0;
+        int[] dieMaxArray = {3, 4, 6, 8, 10, 12, 20};
+
+
+        while (i < times) {
+            rollNum++;
+            int roll = rndRange(dieMaxArray[dieChoice - 1]);
+            System.out.println("Roll number " + rollNum + " Result: " + roll);
+            i++;
+            total = total + roll;
+            if (i == times) {
+                System.out.println("Total: " + total);
+            }
+
+
+        }
+
+
+
+
+    }
+
+    public static int rndRange(int max) {
+        Random rnd = new Random();
+        int rndInt = rnd.nextInt(max) + 1;
+        return rndInt;
+    }
+}
