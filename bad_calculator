@@ -1,0 +1,77 @@
+package javaProject;
+import java.util.Scanner;
+public class First {
+
+	public static void main(String[] args) {
+		
+		@SuppressWarnings("resource")
+		Scanner input = new Scanner(System.in);
+		boolean runAgain = true;
+		float num1, num2;
+		char op, ok;
+		while (runAgain) {
+		System.out.println("Enter a number");
+		num1 = input.nextFloat();
+		
+		System.out.println("Enter another number");
+		num2 = input.nextFloat();
+		
+		System.out.println("Enter a math operator (*/+-)");
+		op = input.next().charAt(0);
+		
+		
+		if (op == '*'){
+			System.out.println("The math problem you entered is " + num1 + op + num2);
+			System.out.println("OK? (Y/N)");
+			ok = input.next().charAt(0);
+			if(ok == 'Y' || ok == 'y'){
+				System.out.println("The result is " + num1*num2);
+				runAgain = false;
+			}
+		}
+		
+		
+		else if(op == '/') {
+			System.out.println("The math problem you entered is " + num1 + op + num2);
+			System.out.println("OK? (Y/N)");
+			ok = input.next().charAt(0);
+			if(ok == 'Y' || ok == 'y'){
+			System.out.println("The result is " + num1/num2);
+			runAgain = false;
+			}
+		}
+			
+		else if (op == '+') {
+			System.out.println("The math problem you entered is " + num1 + op + num2);
+			System.out.println("OK? (Y/N)");
+			ok = input.next().charAt(0);
+			if(ok == 'Y' || ok == 'y'){
+				System.out.println("The result is " + (num1+num2));
+				runAgain = false;
+			}
+		}
+		
+		else if (op == '-') {
+			System.out.println("The math problem you entered is " + num1 + op + num2);
+			System.out.println("OK? (Y/N)");
+			ok = input.next().charAt(0);
+			if(ok == 'Y' || ok == 'y'){
+				System.out.println("The result is " + (num1-num2));
+				runAgain = false;
+		}
+				
+	}
+			
+		
+	
+		}
+	}
+		
+		
+		
+		
+		
+
+}
+
+
