@@ -1,0 +1,121 @@
+import Task
+
+tasks = []
+valid_inputs = [1, 2, 3]
+still_using = True
+
+### TODO: implement improvements suggested by Or
+### TODO: make print method print just the task text without commas or []
+### TODO: implement Tasks class
+### TODO: add a permanent notes file that has all the tasks
+
+
+main_menu_message = """Hi, and welcome to the world's best to do list app!
+    what would you like to do today?
+    """
+menu_actions_message = """    1. Add a task
+    2. Remove a task
+    3. View all tasks
+    """
+exit_message = "thanks for using the to do list program! bye!"
+
+
+def invalid_message(invalid_input):
+    invalid_input = str(input)
+    print("the input " + invalid_input + " you entered is invalid, try again")
+    print()
+    main_screen()
+
+
+def check_valid_input(input):
+    if input in str(valid_inputs):
+        return True
+    else:
+        return False
+
+
+def add_or_remove_message_feedback(add_or_remove, task_name):
+    if add_or_remove is True:
+        print("the task " + task_name + " was added successfully")
+    else:
+        print("the task " + task_name + " was removed succesfully")
+
+
+def add_task(added_task, task_list):
+    task_list.append(added_task)
+    return task_list
+
+
+def before_adding_task():
+    new_task = Task
+    new_task.name = input("What's the name of the task?")
+    new_task.description = input("what's the description of the new task?")
+    new_task.due_date = input("when is the task due?")
+
+    add_task(new_task, tasks)
+    add_or_remove_message_feedback(True, new_task.name)
+    print()
+
+
+def remove_task(task_to_remove, task_list):
+    task_list.remove(task_to_remove)
+
+
+def before_removing_task():
+    print("which task would you like to remove?")
+    task_to_remove = input()
+    remove_task(task_to_remove, tasks)
+    print(add_or_remove_message_feedback(False, task_to_remove))
+
+
+def print_tasks(task_list):
+    for Task in task_list:
+        print(Task.name)
+
+
+
+
+def action_handling(choice):
+    if choice == 1:
+        before_adding_task()
+    if choice == 2:
+        before_removing_task()
+    elif choice == 3:
+        print_tasks(tasks)
+
+
+def input_handling(choice):
+    if check_valid_input(choice):
+        choice = int(choice)
+        action_handling(choice)
+    else:
+        invalid_message(choice)
+
+
+def main_screen():
+    print(main_menu_message)
+    print(menu_actions_message)
+    choice = input()
+    input_handling(choice)
+
+
+def exit_handling():
+    global still_using
+    still_using = False
+    print(exit_message)
+
+
+def check_if_done():
+    print("would you like to do anything else?")
+    print(menu_actions_message)
+    print("if not, press enter")
+    choice = input()
+    if choice == "":
+        exit_handling()
+    else:
+        input_handling(choice)
+
+
+while still_using:
+    main_screen()
+    check_if_done()
